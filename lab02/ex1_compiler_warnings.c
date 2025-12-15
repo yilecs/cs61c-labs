@@ -9,10 +9,12 @@ struct Course {
 
 struct Course *make_course(int id, char *name) {
     struct Course *new_course = malloc(sizeof(struct Course));
+    char *course_name = malloc(strlen(name) + 1);
+    strcpy(course_name, name);
     new_course->id = id;
-    new_course->name = *name;
+    new_course->name = course_name;
 
-    return &new_course;
+    return new_course;
 }
 int main() {
     struct Course *cs161 = make_course(161, "Computer Security");
